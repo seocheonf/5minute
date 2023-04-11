@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player_Card_frame_atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: d11bb7206c6e328498bfed11eee9698a, type: 3}
+    - {fileID: 2800000, guid: 7200a605f161e8d4ab484b1de75b0bba, type: 3}
+    - {fileID: 2800000, guid: e4af5da5450889f40817147f998b6b06, type: 3}
+    - {fileID: 2800000, guid: f6fff0309e207384bb30ca4777456817, type: 3}
+    - {fileID: 2800000, guid: b6755d0e0ecf9e443b23cc098f23f6a7, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: d11bb7206c6e328498bfed11eee9698a, type: 3}
+  - {fileID: 21300000, guid: f6fff0309e207384bb30ca4777456817, type: 3}
+  - {fileID: 21300000, guid: 7200a605f161e8d4ab484b1de75b0bba, type: 3}
+  - {fileID: 21300000, guid: e4af5da5450889f40817147f998b6b06, type: 3}
+  - {fileID: 21300000, guid: b6755d0e0ecf9e443b23cc098f23f6a7, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Player_Blue
+  - Player_Red
+  - Player_Green
+  - Player_Purple
+  - Player_Yellow
+  m_RenderDataMap: {}
+  m_Tag: Player_Card_frame_atlas
+  m_IsVariant: 0
