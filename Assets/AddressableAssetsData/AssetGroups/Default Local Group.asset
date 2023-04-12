@@ -25,6 +25,22 @@ MonoBehaviour:
     m_Address: Assets/Sprites/attack_icon.png
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 4cb9ee26abf05d64fbc9922a2765e55e
+    m_Address: Assets/Prefab/Player_card/Sword.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d03af4febc853094d93b476b49df6b7c
+    m_Address: Assets/Prefab/Player_card/Shield.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 542048ab612422e4aa3d3901d6e79120
+    m_Address: Assets/Prefab/Player_card/Bow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4c5de6b9180be524d8890069c6c8fd41
+    m_Address: Assets/Prefab/Player_card/Wildcard.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a48484e8a10e67946a3652cc8d3443cd, type: 2}
   m_SchemaSet:

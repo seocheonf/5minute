@@ -48,9 +48,17 @@ MonoBehaviour:
     card_name: Shield
     card_type: Attack
     card_text: Shield Attack!
-    card_frame_sprite_atlased:
+    card_frame_sprite: {fileID: 0}
+    card_image_sprite: {fileID: 0}
+    card_frame_sprite_atlas:
       m_AssetGUID: 41cc77b52d628154abaeb076d0d4eced
       m_SubObjectName: Player_Yellow
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    card_image_sprite_atlas:
+      m_AssetGUID: 41cc77b52d628154abaeb076d0d4eced
+      m_SubObjectName: attack_icon_3
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       m_EditorAssetChanged: 0

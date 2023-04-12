@@ -12,6 +12,19 @@ public class Player_Card : MonoBehaviour //일반, 강화 공격카드는 이 스크립트를 �
     
     public Player_Card_Data card_data; //카드에 대한 자세한 정보
 
+
+    private void Awake() //카드가 불려지는 동시에, 카드의 스프라이트를 아틀라스(어드레서블 에셋)로 부터 불러오는 과정.
+    {
+        card_data.card_frame_sprite_atlas.LoadAssetAsync().Completed += handler =>
+        {
+            card_data.card_frame_sprite = handler.Result;
+        };
+        card_data.card_image_sprite_atlas.LoadAssetAsync().Completed += handler =>
+        {
+            card_data.card_image_sprite = handler.Result;
+        };
+    }
+
     //Special카드의 경우, 반드시 재 구현을 해야함.
 
     public virtual void Using_Card()//Player owner, Player_Management player_management, Board_Management board_management)

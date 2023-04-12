@@ -47,7 +47,19 @@ MonoBehaviour:
   card_data:
     card_name: Wildcard
     card_type: Special
-    card_frame_sprite: {fileID: 0}
-    card_image_sprite: {fileID: 0}
     card_text: "\uC774 \uCE74\uB4DC\uB294 \uC5B4\uB5A4 \uC77C\uBC18 \uACF5\uACA9
       \uCE74\uB4DC\uB85C\uB3C4 \uC0AC\uC6A9\uB420 \uC218 \uC788\uB2E4."
+    card_frame_sprite: {fileID: 0}
+    card_image_sprite: {fileID: 0}
+    card_frame_sprite_atlas:
+      m_AssetGUID: 41cc77b52d628154abaeb076d0d4eced
+      m_SubObjectName: Player_Special
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0
+    card_image_sprite_atlas:
+      m_AssetGUID: 41cc77b52d628154abaeb076d0d4eced
+      m_SubObjectName: wildcard
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_EditorAssetChanged: 0

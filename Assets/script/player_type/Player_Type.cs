@@ -15,11 +15,11 @@ public class Card_N
     }
 
     [SerializeField]
-    GameObject player_card; //카드 종류
+    string card_name; //카드 종류
 
-    public GameObject Get_player_card
+    public string Get_player_card_name
     {
-        get { return player_card; }
+        get { return card_name; }
     }
 }
 

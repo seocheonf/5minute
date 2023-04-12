@@ -46,16 +46,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Red:
   - N: 5
-    player_card: {fileID: 4062971810989500092, guid: 4cb9ee26abf05d64fbc9922a2765e55e, type: 3}
+    card_name: Sword
   - N: 3
-    player_card: {fileID: 4062971810989500092, guid: d03af4febc853094d93b476b49df6b7c, type: 3}
+    card_name: Shield
   Green:
   - N: 1
-    player_card: {fileID: 4062971810989500092, guid: 4cb9ee26abf05d64fbc9922a2765e55e, type: 3}
+    card_name: Wildcard
   - N: 1
-    player_card: {fileID: 4062971810989500092, guid: d03af4febc853094d93b476b49df6b7c, type: 3}
+    card_name: Sword
   - N: 4
-    player_card: {fileID: 4062971810989500092, guid: 542048ab612422e4aa3d3901d6e79120, type: 3}
+    card_name: Bow
   Yellow: []
   Blue: []
   Purple: []

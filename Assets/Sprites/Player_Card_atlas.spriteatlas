@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_Card_frame_atlas
+  m_Name: Player_Card_atlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -49,6 +49,9 @@ SpriteAtlas:
     - {fileID: 2800000, guid: e4af5da5450889f40817147f998b6b06, type: 3}
     - {fileID: 2800000, guid: f6fff0309e207384bb30ca4777456817, type: 3}
     - {fileID: 2800000, guid: b6755d0e0ecf9e443b23cc098f23f6a7, type: 3}
+    - {fileID: 2800000, guid: fd3d74a67f6e8e543a5bfe4135a910cf, type: 3}
+    - {fileID: 2800000, guid: 422518cd4864f2343ab9b9bff5743d53, type: 3}
+    - {fileID: 21300000, guid: 413b510c04550604e8ebe9764b49460d, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -58,13 +61,27 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f6fff0309e207384bb30ca4777456817, type: 3}
   - {fileID: 21300000, guid: 7200a605f161e8d4ab484b1de75b0bba, type: 3}
   - {fileID: 21300000, guid: e4af5da5450889f40817147f998b6b06, type: 3}
+  - {fileID: 21300000, guid: fd3d74a67f6e8e543a5bfe4135a910cf, type: 3}
+  - {fileID: 21300000, guid: 413b510c04550604e8ebe9764b49460d, type: 3}
+  - {fileID: -677947398, guid: 422518cd4864f2343ab9b9bff5743d53, type: 3}
+  - {fileID: 123771820, guid: 422518cd4864f2343ab9b9bff5743d53, type: 3}
+  - {fileID: 518852000, guid: 422518cd4864f2343ab9b9bff5743d53, type: 3}
+  - {fileID: 814872318, guid: 422518cd4864f2343ab9b9bff5743d53, type: 3}
+  - {fileID: 2093320960, guid: 422518cd4864f2343ab9b9bff5743d53, type: 3}
   - {fileID: 21300000, guid: b6755d0e0ecf9e443b23cc098f23f6a7, type: 3}
   m_PackedSpriteNamesToIndex:
   - Player_Blue
   - Player_Red
   - Player_Green
   - Player_Purple
+  - Player_Special
+  - wildcard
+  - attack_icon_4
+  - attack_icon_0
+  - attack_icon_1
+  - attack_icon_2
+  - attack_icon_3
   - Player_Yellow
   m_RenderDataMap: {}
-  m_Tag: Player_Card_frame_atlas
+  m_Tag: Player_Card_atlas
   m_IsVariant: 0

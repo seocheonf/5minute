@@ -34,10 +34,9 @@ public class Player_Card_Data
         get { return card_text; }
     }
 
-    public AssetReferenceAtlasedSprite card_frame_sprite_atlased;
-    
+    public Sprite card_frame_sprite;
+    public Sprite card_image_sprite;
 
-    //public AssetReferenceSprite card_image_sprite;
-    
-
+    public AssetReferenceAtlasedSprite card_frame_sprite_atlas;
+    public AssetReferenceAtlasedSprite card_image_sprite_atlas;
 }
