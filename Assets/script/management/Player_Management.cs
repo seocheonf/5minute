@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.AddressableAssets;
+using TMPro;
 
 public class Player_Management : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class Player_Management : MonoBehaviour
     public Dictionary<string, GameObject> All_Card_Information; //모든 플레이어가 지니고 있는 카드 정보
 
     string player_card_AssetReference_path = "Assets/Prefab/Player_card/";
+
+
+    public GameObject Player_Card_Entity;
+    public GameObject Entity_Spawn_Point;
 
     private void Start()
     {
@@ -57,7 +62,10 @@ public class Player_Management : MonoBehaviour
             string card_name = card_information.Key;
             Addressables.InstantiateAsync(player_card_AssetReference_path + card_name + ".prefab").Completed += handler =>
             {
-                All_Card_Information[card_name] = handler.Result;
+                GameObject Card_result = handler.Result; //카드 정보 불러오기
+                
+                //카드 정보에서 실제 정보를 함수로 넘겨주기
+                All_Card_Information[card_name] = card_generation(Card_result.GetComponent<Player_Card>()); //카드 실체 정보를 생성하고 카드 정보를 저장
             };
         }
 
@@ -65,9 +73,45 @@ public class Player_Management : MonoBehaviour
         
     }
 
+    //카드 실체 정보 생성
+    GameObject card_generation(Player_Card card_inform)
+    {
+
+        //카드 데이터는 일반 클래스로, monobehaviour를 상속받은 Player_Card를 통해 가져와야 함
+        Player_Card_Data card_data = card_inform.card_data;
+
+        //Entity를 생성하고, 그 자식 정보를 가져옴.
+        GameObject generated_object = Instantiate(Player_Card_Entity,Entity_Spawn_Point.transform);
+        Transform Inform = generated_object.transform;
+
+        StartCoroutine(Card_image_generation(card_data, Inform)); //카드 이미지 생성 대기
+        
+        return generated_object;
+
+
+    }
+
+    //카드 이미지 생성 대기
+    IEnumerator Card_image_generation(Player_Card_Data P, Transform T)
+    {
+        while(P.card_image_sprite == null || P.card_frame_sprite == null)
+        {
+            yield return null;
+        }
+        //Entity의 각 자식에 카드 데이터를 가져와 대입 시킴.
+        T.Find("Description Image").GetComponent<SpriteRenderer>().sprite = P.card_image_sprite;
+        T.Find("Frame").GetComponent<SpriteRenderer>().sprite = P.card_frame_sprite;
+        T.Find("Name Text").GetComponent<TextMeshPro>().text = P.Card_name;
+        T.Find("Description Text").GetComponent<TextMeshPro>().text = P.Card_text;
+
+
+    }
+
+
     //
     IEnumerator Waiting_all_card() //전체 카드에 대한 오브젝트가 모두 생성되기 전까지는, 플레이어가 카드를 드로우하지 못하게 한다.
     {
+
         bool waiting_card = true;
         while (waiting_card)
         {

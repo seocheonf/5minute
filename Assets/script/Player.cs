@@ -8,11 +8,14 @@ public class Player : MonoBehaviour
 
     public List<GameObject> card_in_hand;
 
+
     public List<string> card_in_sacrifice;
 
     public Card_N[] player_type;
 
     public Player_Type typetest;
+
+
 
     public Dictionary<string, GameObject> All_Card_Information;
 
@@ -37,10 +40,13 @@ public class Player : MonoBehaviour
         {
             if (card_in_hand.Count < 4 && card_in_deck.Count > 0)
             {
+                //GameObject Drawing_Card = Instantiate()
                 card_in_hand.Add(All_Card_Information[card_in_deck[0]]); //모든 카드 정보에서 카드를 빼오고, 그 카드를 핸드에 넣음
                 card_in_deck.RemoveAt(0); //덱의 맨 위를 제거함
             }
             yield return null;
         }
     }
+
+    
 }
