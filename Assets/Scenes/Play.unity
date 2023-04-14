@@ -326,6 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1259105381}
   - component: {fileID: 1259105382}
+  - component: {fileID: 1259105383}
   m_Layer: 0
   m_Name: Board_Management
   m_TagString: Untagged
@@ -342,7 +343,7 @@ Transform:
   m_GameObject: {fileID: 1259105380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -360,6 +361,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 815dbf20336a1834cab3786e0ac623dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Board_Each_Object: {fileID: 8810249120561243687, guid: 4c2a3678e296c7c468cbf25b94d6fdf6, type: 3}
+--- !u!58 &1259105383
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259105380}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1872612993
 GameObject:
   m_ObjectHideFlags: 0

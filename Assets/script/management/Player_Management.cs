@@ -57,6 +57,8 @@ public class Player_Management : MonoBehaviour
             
             //Each_Player_tempt.GetComponent<Player>().All_Card_Information = All_Card_Information; // 카드 전체 정보에 대해 플레이어가 알 수 있도록 딕셔너리를 공유한다.
         }
+
+        GameObject.Find("Board_Management").GetComponent<Board_Management>().Board_Generation(All_Player); //플레이어 정보를 넘겨, 각각에 맞는 보드 판 생성
     }
 
 

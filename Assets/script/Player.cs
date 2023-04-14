@@ -6,7 +6,7 @@ using UnityEngine.AddressableAssets;
 
 public class Player : MonoBehaviour
 {
-    bool me;
+    public bool me;
 
     public List<string> card_in_deck;
 
