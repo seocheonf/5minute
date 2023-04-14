@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Address: Assets/Prefab/Player_card/Wildcard.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 58fc6d60e897b9e49964e66df3b8cf89
+    m_Address: Assets/Prefab/Player_Card_Entity.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a48484e8a10e67946a3652cc8d3443cd, type: 2}
   m_SchemaSet:

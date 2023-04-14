@@ -254,8 +254,13 @@ MonoBehaviour:
   All_Player:
   - {fileID: 1053689252}
   - {fileID: 1872612994}
-  Player_Card_Entity: {fileID: 159099170612644179, guid: 58fc6d60e897b9e49964e66df3b8cf89, type: 3}
-  Entity_Spawn_Point: {fileID: 1383284446}
+  Card_Back_Reference:
+    m_AssetGUID: 41cc77b52d628154abaeb076d0d4eced
+    m_SubObjectName: Card_Back
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  Card_Back: {fileID: 0}
 --- !u!1 &1053689251
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,10 +291,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card_in_deck: []
-  card_in_hand: []
-  card_in_sacrifice: []
   player_type: []
   typetest: {fileID: -4870117006352201444, guid: 164180fd32e161d428ba50f87d43758d, type: 3}
+  card_in_hand: []
+  card_in_sacrifice: []
+  Player_Card_Entity_inform:
+    m_AssetGUID: 58fc6d60e897b9e49964e66df3b8cf89
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  Card_Back: {fileID: 0}
 --- !u!4 &1053689253
 Transform:
   m_ObjectHideFlags: 0
@@ -330,7 +341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259105380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.40756154, y: -0.955993, z: 0.027212933}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -349,37 +360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 815dbf20336a1834cab3786e0ac623dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1383284446
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1383284447}
-  m_Layer: 0
-  m_Name: Entity_Spawn_Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1383284447
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383284446}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50, y: 50, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1872612993
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,10 +390,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card_in_deck: []
-  card_in_hand: []
-  card_in_sacrifice: []
   player_type: []
   typetest: {fileID: -4870117006352201444, guid: 164180fd32e161d428ba50f87d43758d, type: 3}
+  card_in_hand: []
+  card_in_sacrifice: []
+  Player_Card_Entity_inform:
+    m_AssetGUID: 58fc6d60e897b9e49964e66df3b8cf89
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  Card_Back: {fileID: 0}
 --- !u!4 &1872612995
 Transform:
   m_ObjectHideFlags: 0

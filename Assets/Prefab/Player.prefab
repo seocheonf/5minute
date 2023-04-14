@@ -45,4 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card_in_deck: []
+  player_type: []
+  typetest: {fileID: 0}
+  card_in_hand: []
   card_in_sacrifice: []
+  Player_Card_Entity_inform:
+    m_AssetGUID: 58fc6d60e897b9e49964e66df3b8cf89
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  Card_Back: {fileID: 0}

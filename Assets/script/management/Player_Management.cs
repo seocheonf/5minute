@@ -11,11 +11,26 @@ public class Player_Management : MonoBehaviour
 
     public Dictionary<string, GameObject> All_Card_Information; //모든 플레이어가 지니고 있는 카드 정보
 
+
+    [SerializeField]
+    AssetReferenceAtlasedSprite Card_Back_Reference; //카드 뒷면 정보
+
+    public Sprite Card_Back; //카드 뒷면 정보
+
+
+
     string player_card_AssetReference_path = "Assets/Prefab/Player_card/";
 
 
-    public GameObject Player_Card_Entity;
-    public GameObject Entity_Spawn_Point;
+
+    private void Awake()
+    {
+        Card_Back_Reference.LoadAssetAsync().Completed += handler =>
+        {
+            Card_Back = handler.Result;
+        };
+    }
+
 
     private void Start()
     {
@@ -36,8 +51,11 @@ public class Player_Management : MonoBehaviour
         GameObject[] All_Player_tempt = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject Each_Player_tempt in All_Player_tempt)
         {
-            All_Player.Add(Each_Player_tempt.GetComponent<Player>());
-            Each_Player_tempt.GetComponent<Player>().All_Card_Information = All_Card_Information; // 카드 전체 정보에 대해 플레이어가 알 수 있도록 딕셔너리를 공유한다.
+            Player A = Each_Player_tempt.GetComponent<Player>();
+            All_Player.Add(A);
+            A.Card_Back = Card_Back;
+            
+            //Each_Player_tempt.GetComponent<Player>().All_Card_Information = All_Card_Information; // 카드 전체 정보에 대해 플레이어가 알 수 있도록 딕셔너리를 공유한다.
         }
     }
 
@@ -62,49 +80,12 @@ public class Player_Management : MonoBehaviour
             string card_name = card_information.Key;
             Addressables.InstantiateAsync(player_card_AssetReference_path + card_name + ".prefab").Completed += handler =>
             {
-                GameObject Card_result = handler.Result; //카드 정보 불러오기
-                
-                //카드 정보에서 실제 정보를 함수로 넘겨주기
-                All_Card_Information[card_name] = card_generation(Card_result.GetComponent<Player_Card>()); //카드 실체 정보를 생성하고 카드 정보를 저장
+                All_Card_Information[card_name] = handler.Result; //카드 정보 불러오기
             };
         }
 
         StartCoroutine(Waiting_all_card());
         
-    }
-
-    //카드 실체 정보 생성
-    GameObject card_generation(Player_Card card_inform)
-    {
-
-        //카드 데이터는 일반 클래스로, monobehaviour를 상속받은 Player_Card를 통해 가져와야 함
-        Player_Card_Data card_data = card_inform.card_data;
-
-        //Entity를 생성하고, 그 자식 정보를 가져옴.
-        GameObject generated_object = Instantiate(Player_Card_Entity,Entity_Spawn_Point.transform);
-        Transform Inform = generated_object.transform;
-
-        StartCoroutine(Card_image_generation(card_data, Inform)); //카드 이미지 생성 대기
-        
-        return generated_object;
-
-
-    }
-
-    //카드 이미지 생성 대기
-    IEnumerator Card_image_generation(Player_Card_Data P, Transform T)
-    {
-        while(P.card_image_sprite == null || P.card_frame_sprite == null)
-        {
-            yield return null;
-        }
-        //Entity의 각 자식에 카드 데이터를 가져와 대입 시킴.
-        T.Find("Description Image").GetComponent<SpriteRenderer>().sprite = P.card_image_sprite;
-        T.Find("Frame").GetComponent<SpriteRenderer>().sprite = P.card_frame_sprite;
-        T.Find("Name Text").GetComponent<TextMeshPro>().text = P.Card_name;
-        T.Find("Description Text").GetComponent<TextMeshPro>().text = P.Card_text;
-
-
     }
 
 
@@ -126,6 +107,12 @@ public class Player_Management : MonoBehaviour
             }
             yield return null;
         }
+
+        while (Card_Back == null) //카드 뒷면 정보를 모두 불러오기 전까지는 플레이어가 카드를 드로우하지 못하게 한다.
+        {
+            yield return null;
+        }
+
         yield return null;
 
         //위의 과정을 통해 모든 오브젝트가 준비가 된다면
@@ -133,6 +120,7 @@ public class Player_Management : MonoBehaviour
         foreach (Player each_player in All_Player)
         {
             each_player.All_Card_Information = All_Card_Information;
+            each_player.Card_Back = Card_Back;
         }
         yield return null;
     }
