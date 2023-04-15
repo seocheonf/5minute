@@ -3,25 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//보드가 자기 플레이어 정보 확인하고, 핸드에 있는 오브젝트를 자기에 맞춰 배치할 것임.
-//레이어도, 펼치는 것도.
+//각 보드는 플레이어의 카드가 추가될 때 함수를 호출받아 정렬을 수행한다.
 
 public class Board_Each : MonoBehaviour
 {
-    public Player player;
-
-    private void Start()
+    public void SpreadCard(List<GameObject> Player_card_in_hand)
     {
-        StartCoroutine(like_update());
+        foreach(GameObject each_card in Player_card_in_hand)
+        {
+            each_card.transform.position = transform.position;
+            each_card.transform.rotation = transform.rotation;
+        }
     }
-
-    IEnumerator like_update()
-    {
-        yield return new WaitUntil(() => player != null);
-        yield return new WaitUntil(() => player.card_in_hand != null);
-
-        //카드 정렬 시작
-
-    }
-
 }

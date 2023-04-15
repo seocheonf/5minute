@@ -26,7 +26,9 @@ public class Board_Management : MonoBehaviour
 
             GameObject board_each_tempt = Instantiate(Board_Each_Object,transform); // 보드의 자식으로 생성
 
-            board_each_tempt.GetComponent<Board_Each>().player = All_Player[i]; // 보드에 플레이어 정보 입력.
+            All_Player[i].Player_Board = board_each_tempt.GetComponent<Board_Each>(); //플레이어에 보드의 정보를 입력
+
+            //board_each_tempt.GetComponent<Board_Each>().player = All_Player[i]; // 보드에 플레이어 정보 입력.
 
             //around를 활용하지 않은 회전
             board_each_tempt.transform.Rotate(new Vector3(0,0,1), rotation_degree_unit * rotation_number);
@@ -61,7 +63,9 @@ public class Board_Management : MonoBehaviour
 
         //board_each_tempt.transform.parent = transform; // 보드의 자식으로 생성
 
-        board_each_me.GetComponent<Board_Each>().player = All_Player[me]; // 보드에 플레이어 정보 입력.
+        All_Player[me].Player_Board = board_each_me.GetComponent<Board_Each>(); //플레이어에 보드의 정보를 입력
+
+        //board_each_me.GetComponent<Board_Each>().player = All_Player[me]; // 보드에 플레이어 정보 입력.
     }
 
 

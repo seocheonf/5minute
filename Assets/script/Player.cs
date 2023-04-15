@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
     public Sprite Card_Back;
 
 
+    //Board_Each 정보
+
+    public Board_Each Player_Board;
+
     private void Awake()//플레이어 카드 타입 지정 테스트
     {
         if (gameObject.name.Equals("Player"))
@@ -69,7 +73,7 @@ public class Player : MonoBehaviour
                     GameObject Entity = handler.Result;
                     StartCoroutine(card_generation(Entity.GetComponent<Player_Card_Entity>(), All_Card_Information[card_in_deck[0]].GetComponent<Player_Card>().card_data)); //생성된 엔티티 정보에 카드 정보를 찾아 대입시킴
                     card_in_hand.Add(Entity); //생성된 엔티티 정보를 핸드에 넣음
-
+                    Player_Board.SpreadCard(card_in_hand); //핸드 정보를 보드에 넘겨줌
                 };
                                 
                 card_in_deck.RemoveAt(0); //덱의 맨 위를 제거함
