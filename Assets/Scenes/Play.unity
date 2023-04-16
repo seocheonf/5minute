@@ -176,7 +176,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -261,6 +261,64 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_EditorAssetChanged: 0
   Card_Back: {fileID: 0}
+--- !u!1 &660303017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 660303019}
+  - component: {fileID: 660303018}
+  m_Layer: 0
+  m_Name: Enemy_Management
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &660303018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660303017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944786c30c6391e409b6ea7b906d0ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Card_Frame_Reference:
+    m_AssetGUID: 41cc77b52d628154abaeb076d0d4eced
+    m_SubObjectName: Enemy
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 0
+  Enemy_Card_Frame: {fileID: 0}
+  Enemy_Card_Entity_inform:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  typetest: {fileID: -7211973377225373797, guid: 9f6e889ae1107bb41817a3fc17865887, type: 3}
+  enemy_type: []
+--- !u!4 &660303019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660303017}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0377191, y: -7.6009474, z: 0.19685866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1053689251
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c93cf6aca09d894e94abd32c82575aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  me: 0
   card_in_deck: []
   player_type: []
   typetest: {fileID: -4870117006352201444, guid: 164180fd32e161d428ba50f87d43758d, type: 3}
@@ -301,6 +360,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   Card_Back: {fileID: 0}
+  Player_Board: {fileID: 0}
 --- !u!4 &1053689253
 Transform:
   m_ObjectHideFlags: 0
@@ -362,6 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Board_Each_Object: {fileID: 8810249120561243687, guid: 4c2a3678e296c7c468cbf25b94d6fdf6, type: 3}
+  Board_Each_Object_enemy: {fileID: 7446086078279990804, guid: d69e43a9071867e45973a71bcd7c98cf, type: 3}
 --- !u!58 &1259105383
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -369,7 +430,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259105380}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -407,6 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c93cf6aca09d894e94abd32c82575aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  me: 0
   card_in_deck: []
   player_type: []
   typetest: {fileID: -4870117006352201444, guid: 164180fd32e161d428ba50f87d43758d, type: 3}
@@ -418,6 +480,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   Card_Back: {fileID: 0}
+  Player_Board: {fileID: 0}
 --- !u!4 &1872612995
 Transform:
   m_ObjectHideFlags: 0

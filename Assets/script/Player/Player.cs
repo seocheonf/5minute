@@ -72,8 +72,7 @@ public class Player : MonoBehaviour
                 {
                     GameObject Entity = handler.Result;
                     StartCoroutine(card_generation(Entity.GetComponent<Player_Card_Entity>(), All_Card_Information[card_in_deck[0]].GetComponent<Player_Card>().card_data)); //생성된 엔티티 정보에 카드 정보를 찾아 대입시킴
-                    card_in_hand.Add(Entity); //생성된 엔티티 정보를 핸드에 넣음
-                    Player_Board.SpreadCard(card_in_hand); //핸드 정보를 보드에 넘겨줌
+                    Add_card_in_hand(Entity); //생성된 엔티티 정보를 핸드에 넣음
                 };
                                 
                 card_in_deck.RemoveAt(0); //덱의 맨 위를 제거함
@@ -93,6 +92,24 @@ public class Player : MonoBehaviour
         A.Setup(B.card_frame_sprite, B.card_image_sprite, B.Card_name, B.Card_text, Card_Back, me);
 
     }
+
+    //핸드에 카드 추가.
+    public void Add_card_in_hand(GameObject Entity)
+    {
+        card_in_hand.Add(Entity);
+        //카드가 추가 될 때 핸드 정보를 보드에 넘겨줌
+        Player_Board.SpreadCard(card_in_hand);
+    }
+
+    //핸드에 카드 삭제
+    public void Remove_card_in_hand(GameObject Entity)
+    {
+        card_in_hand.RemoveAt(card_in_hand.IndexOf(Entity));
+        //카드가 감소 될 때 핸드 정보를 보드에 넘겨줌
+        Player_Board.SpreadCard(card_in_hand);
+    }
+
+    
 
 
 }

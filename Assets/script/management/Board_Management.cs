@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// 보드는 오브젝트 위치만을 결정한다.
+
 public class Board_Management : MonoBehaviour
 {
     public GameObject Board_Each_Object;
+
+    public GameObject Board_Each_Object_enemy;
 
     public void Board_Generation(List<Player> All_Player)
     {
@@ -68,14 +73,28 @@ public class Board_Management : MonoBehaviour
         //board_each_me.GetComponent<Board_Each>().player = All_Player[me]; // 보드에 플레이어 정보 입력.
     }
 
+    public void Board_Generation_Enemy(List<GameObject> Enemy_deck)
+    {
+        GameObject board_each_tempt = Instantiate(Board_Each_Object_enemy, transform);
+        board_each_tempt.GetComponent<Board_Enemy>().Enemy_deck = Enemy_deck;
+
+    }
 
 
-    /* 적 판에 대한 별도의 스크립트와, 자식을 생성하고
+
+
+    /* 
+     * 
+     * 적 카드 보드판 생성은 Enemy_Management를 만들어서 거기서 여기 제너레이션 함수를 호출하는 방식?
+     * Enemy.cs로 각 적에 대한 정보 저장
+     * 
+     * 적 판에 대한 별도의 스크립트와, 자식을 생성하고
      * 적 판 스크립트에서, 발동 카드에 대한 트리거를 통해 임무 수행
      * Board_Enemy.cs 이런식으로. board generation에서 모두 생성
      * 난이도에 대한 변수 값을 받아, 난이도에 맞는 적 판을 생성할 것.
      * 
+     * 
      */
-    
-    
+
+
 }

@@ -45,6 +45,22 @@ MonoBehaviour:
     m_Address: Assets/Prefab/Player_Card_Entity.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 138cc271656980148bcb457858ae0c94
+    m_Address: Assets/Prefab/Enemy_Card_Entity.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1341194ef5c96a647a14d6e1f4c3b0b7
+    m_Address: Assets/Sprites/Enemy_atlas.spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4dc5f8a61c9a2e84bb864cf607d0f6e6
+    m_Address: Assets/Prefab/Enemy_card/Morph.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 33d5ac6b725684c46b07fa535f47831f
+    m_Address: Assets/Prefab/Enemy_card/Boss.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a48484e8a10e67946a3652cc8d3443cd, type: 2}
   m_SchemaSet:
