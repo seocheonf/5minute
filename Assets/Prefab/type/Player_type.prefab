@@ -50,12 +50,14 @@ MonoBehaviour:
   - N: 3
     card_name: Shield
   Green:
-  - N: 1
+  - N: 10
     card_name: Wildcard
-  - N: 1
+  - N: 8
     card_name: Sword
-  - N: 4
+  - N: 12
     card_name: Bow
+  - N: 4
+    card_name: Shield
   Yellow: []
   Blue: []
   Purple: []

@@ -63,33 +63,36 @@ public class Player : MonoBehaviour
     {
         yield return new WaitUntil(()=>All_Card_Information != null && Card_Back != null); //카드 정보(이미지, 텍스트 등)가 준비되기 전까지 드로우하지 않는다. //덱 셔플이 완료되기 전까지는 드로우하지 않는다. ---- //전체 캐릭터 정보를 순회하여, 필요한 카드정보가 수집되기 전까지는 카드 드로우를 진행하지 않는다 -> All_Card_Information != null
 
+        bool wait = false;
+
         while (true)
         {
             if (card_in_hand.Count < 4 && card_in_deck.Count > 0)
             {
-
-                Player_Card_Entity_inform.InstantiateAsync().Completed += handler =>
+                wait = true;
+                Player_Card_Entity_inform.InstantiateAsync(transform).Completed += handler =>
                 {
                     GameObject Entity = handler.Result;
-                    StartCoroutine(card_generation(Entity.GetComponent<Player_Card_Entity>(), All_Card_Information[card_in_deck[0]].GetComponent<Player_Card>().card_data)); //생성된 엔티티 정보에 카드 정보를 찾아 대입시킴
+                    StartCoroutine(card_generation(Entity.GetComponent<Player_Card_Entity>(), All_Card_Information[card_in_deck[0]].GetComponent<Player_Card>().card_data, All_Card_Information[card_in_deck[0]].GetComponent<Player_Card>(), gameObject.GetComponent<Player>())); //생성된 엔티티 정보에 카드 정보를 찾아 대입시킴
                     Add_card_in_hand(Entity); //생성된 엔티티 정보를 핸드에 넣음
+                    card_in_deck.RemoveAt(0); //덱의 맨 위를 제거함
+                    wait = false;
                 };
-                                
-                card_in_deck.RemoveAt(0); //덱의 맨 위를 제거함
+
             }
-            yield return null;
+            yield return new WaitUntil(() => wait == false); //끝을 체크 안하고 이전처럼 리무브를 밖에서하면 삭제가 먼저되고, handler이후 처리가 되서 index 아웃 에러가 뜨게됨. 완전히 작업을 마친 후에 다음 작업을 진행하도록 제한을 둠.
         }
     }
 
     //카드 실체 정보 생성
-    IEnumerator card_generation(Player_Card_Entity A, Player_Card_Data B)
+    IEnumerator card_generation(Player_Card_Entity A, Player_Card_Data B, Player_Card C, Player owner)
     {
         while (B.card_image_sprite == null || B.card_frame_sprite == null)
         {
             yield return null;
         }
         //Entity의 각 자식에 카드 데이터를 가져와 대입 시킴.
-        A.Setup(B.card_frame_sprite, B.card_image_sprite, B.Card_name, B.Card_text, Card_Back, me);
+        A.Setup(B.card_frame_sprite, B.card_image_sprite, B.Card_name, B.Card_text, Card_Back, me, C, owner);
 
     }
 
@@ -104,7 +107,15 @@ public class Player : MonoBehaviour
     //핸드에 카드 삭제
     public void Remove_card_in_hand(GameObject Entity)
     {
-        card_in_hand.RemoveAt(card_in_hand.IndexOf(Entity));
+        /* 
+         * 구현상 Player_Card_Entity에서 두번을 불러와 오류가 생겨버림. 일단 오류 체크 겸 넣어두는데, 더 나이스한 방법이 없을까 고민해 볼 것.
+         */
+        int index = card_in_hand.IndexOf(Entity);
+
+        if (index < 0) //찾지 못할 시 에러이므로 관련 처리. -1일 경우 못찾은 것.
+            return;
+
+        card_in_hand.RemoveAt(index);
         //카드가 감소 될 때 핸드 정보를 보드에 넘겨줌
         Player_Board.SpreadCard(card_in_hand);
     }

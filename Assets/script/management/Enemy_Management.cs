@@ -45,8 +45,8 @@ public class Enemy_Management : MonoBehaviour
     public void enemy_generation()
     {
         Board_Management board_management = GameObject.Find("Board_Management").GetComponent<Board_Management>();
-        board_management.Board_Generation_Enemy(Enemy_deck); //Enemy 정보를 넘겨, 각각에 맞는 보드 판 생성
-
+        board_management.Board_Generation_Enemy(Enemy_deck, enemy_type.Length); //Enemy 정보를 넘겨, 각각에 맞는 보드 판 생성
+        
         foreach (Enemy_Card_N each_enemy in enemy_type)
         {
             Addressables.InstantiateAsync(enemy_card_AssetReference_path + each_enemy.Get_enemy_card_name + ".prefab").Completed += handler =>

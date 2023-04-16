@@ -27,13 +27,27 @@ public class Player_Card : MonoBehaviour //일반, 강화 공격카드는 이 스크립트를 �
 
     //Special카드의 경우, 반드시 재 구현을 해야함.
 
-    public virtual void Using_Card()//Player owner, Player_Management player_management, Board_Management board_management)
+    public virtual bool Using_Card(GameObject Enemy_object)//Player owner, Player_Management player_management, Board_Management board_management)
     {
         if (card_data.Card_type.Equals("Special")) //Special카드의 능력 재구현을 잊을 시, 오류가 발생하지 않도록 예외 처리.
-            return;
+            return true;
         else //일반, 강화 공격카드의 동작 로직.
         {
-            Debug.Log("normal");
+            Enemy enemy_tempt;
+            enemy_tempt = Enemy_object.GetComponent<Enemy>();
+            if(enemy_tempt.hp.ContainsKey(card_data.Card_name))
+            {
+                if (enemy_tempt.hp[card_data.Card_name] > 0)
+                {
+                    enemy_tempt.hp[card_data.Card_name] -= 1;
+                    enemy_tempt.hp_all -= 1;
+                }
+            }
+            if(enemy_tempt.hp_all == 0)
+            {
+                enemy_tempt.alive = false;
+            }
+            return true;
         }
     }
 

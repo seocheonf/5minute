@@ -24,6 +24,9 @@ public class Player_Card_Entity : MonoBehaviour
     [SerializeField]
     SpriteRenderer Back;
 
+    //back active 확인
+    bool me = false;
+
     int origin_order;
 
     //각 카드 별 오더 단위 : 1 초과해야 함
@@ -37,13 +40,27 @@ public class Player_Card_Entity : MonoBehaviour
     //카드가 보드에 의해 정렬이 완료될 때 저장됨.
     Card_Origin card_origin;
 
+    //카드 정보
+    Player_Card data;
+
+    //카드 잡은 여부
+    bool up_down = false;
+    //적이 감지된 여부
+    bool enemy_on = false;
+    //카드 사용 여부
+    bool used = false;
+
+    //owner
+    Player owner;
+    
+
     public void Set_card_origin()
     {
         Transform set_tempt = gameObject.transform;
         card_origin = new Card_Origin(set_tempt.position, set_tempt.rotation, set_tempt.localScale);
     }
 
-    public void Setup(Sprite Frame_data, Sprite Image_data, string Name_data, string Description_data, Sprite Back_data, bool me)
+    public void Setup(Sprite Frame_data, Sprite Image_data, string Name_data, string Description_data, Sprite Back_data, bool me, Player_Card data, Player owner)
     {
 
         frame.sprite = Frame_data;
@@ -51,6 +68,9 @@ public class Player_Card_Entity : MonoBehaviour
         name_.text = Name_data;
         description.text = Description_data;
         Back.sprite = Back_data;
+        this.data = data;
+        this.me = me;
+        this.owner = owner;
 
         if (me)
         {
@@ -123,6 +143,84 @@ public class Player_Card_Entity : MonoBehaviour
     public Vector2 GetSize()
     {
         return gameObject.GetComponent<BoxCollider2D>().size;
+    }
+
+    private void OnMouseOver()
+    {
+        SetOrder(500);
+        transform.localScale = card_origin.origin_scale * 1.4f;
+    }
+
+    private void OnMouseExit()
+    {
+        SetOrder(origin_order);
+        transform.localScale = card_origin.origin_scale;
+    }
+
+    private void Update()
+    {
+        if (!used)
+        {
+            if (up_down)
+                Card_Drag();
+            else
+            {
+                if (enemy_on)
+                {
+                    used = true;
+                    Attacking();
+                }
+                else
+                    transform.position = card_origin.origin_pos;
+            }
+        }
+
+    }
+
+    private void Card_Drag()
+    {
+        Vector3 position_tempt = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = new Vector3(position_tempt.x, position_tempt.y, position_tempt.z - Camera.main.transform.position.z);
+    }
+
+
+    //나일 때만
+
+    private void OnMouseDown()
+    {
+        if(me)
+            up_down = true;
+    }
+
+    private void OnMouseUp()
+    {
+        if(me)
+            up_down = false;
+    }
+
+    Collider2D Enemy_collsion;
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.tag.Equals("Board_Enemy"))
+        {
+            enemy_on = true;
+            Enemy_collsion = collision;
+        }
+        else
+        {
+            enemy_on = false;
+            Enemy_collsion = null;
+        }
+    }
+
+    void Attacking()
+    {
+        data.Using_Card(Enemy_collsion.GetComponent<Board_Enemy>().Enemy_deck[0]);
+        SetOrder(0);
+        owner.Remove_card_in_hand(gameObject);
+        Enemy_collsion.GetComponent<Board_Enemy>().Using_player_card(gameObject);
+        gameObject.GetComponent<Player_Card_Entity>().enabled = false;
     }
 }
 

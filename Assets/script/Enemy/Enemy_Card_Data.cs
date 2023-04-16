@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.U2D;
 
+[System.Serializable]
 public class Enemy_HP
 {
     public string Attack;

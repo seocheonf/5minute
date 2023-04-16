@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Card_Origin
 {
-    Vector3 origin_pos;
-    Quaternion origin_rotation;
-    Vector3 origin_scale;
+    public Vector3 origin_pos;
+    public Quaternion origin_rotation;
+    public Vector3 origin_scale;
     
     public Card_Origin(Vector3 origin_pos, Quaternion origin_rotation, Vector3 origin_scale)
     {

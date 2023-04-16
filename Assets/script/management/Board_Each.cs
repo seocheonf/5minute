@@ -9,6 +9,8 @@ public class Board_Each : MonoBehaviour
 {
     public void SpreadCard(List<GameObject> Player_card_in_hand)
     {
+        if (Player_card_in_hand.Count <= 0)
+            return;
 
         float frame_width = Player_card_in_hand[0].GetComponent<Player_Card_Entity>().GetSize().x;
         int card_count = Player_card_in_hand.Count;

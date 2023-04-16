@@ -73,11 +73,11 @@ public class Board_Management : MonoBehaviour
         //board_each_me.GetComponent<Board_Each>().player = All_Player[me]; // 보드에 플레이어 정보 입력.
     }
 
-    public void Board_Generation_Enemy(List<GameObject> Enemy_deck)
+    public void Board_Generation_Enemy(List<GameObject> Enemy_deck, int count)
     {
         GameObject board_each_tempt = Instantiate(Board_Each_Object_enemy, transform);
         board_each_tempt.GetComponent<Board_Enemy>().Enemy_deck = Enemy_deck;
-
+        board_each_tempt.GetComponent<Board_Enemy>().enemy_count = count;
     }
 
 
