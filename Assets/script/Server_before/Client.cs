@@ -14,7 +14,10 @@ public class Client : MonoBehaviour
 {
     public Text TTTClient;
 
-    private static Client instance = null;
+    public static Client instance = null;
+
+    [SerializeField]
+    public GameObject ggg;
 
     private void Awake()
     {
@@ -32,7 +35,7 @@ public class Client : MonoBehaviour
     public InputField IPInput, PortInput, NickInput;
     string clientName;
 
-    bool socketReady;
+    public bool socketReady;
     TcpClient socket;
     NetworkStream stream;
     StreamWriter writer;
@@ -82,9 +85,10 @@ public class Client : MonoBehaviour
 
             BinaryFormatter formatter = new BinaryFormatter();
             MemoryStream memorystream = new MemoryStream(buffer);
-            TTT test = (TTT)formatter.Deserialize(memorystream);
 
-            TTTClient.text = test.str + test.tni.ToString();
+            var test = formatter.Deserialize(memorystream);
+            Debug.Log(test.GetType());
+            OnIncomingData2(test.GetType(), test);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -92,6 +96,21 @@ public class Client : MonoBehaviour
             Send("client");
         }
     }
+
+    void OnIncomingData2(Type type, object data)
+    {
+        if(type.ToString().Equals("TTT"))
+        {
+            TTT test = (TTT)data;
+            Debug.Log(test.str + test.tni);
+        }
+        else if(type.ToString().Equals("GameObject"))
+        {
+            ggg = (GameObject)data;
+        }
+    }
+
+
 
     void OnIncomingData(string data)
     {

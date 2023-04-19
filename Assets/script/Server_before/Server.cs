@@ -25,9 +25,12 @@ public class Server : MonoBehaviour
 {
     public Text TTTServer;
 
-    private static Server instance = null;
+    public static Server instance = null;
 
     TTT test;
+
+    [SerializeField]
+    public GameObject ggg;
 
     private void Awake()
     {
@@ -51,7 +54,7 @@ public class Server : MonoBehaviour
     List<ServerClient> disconnectList;
 
     TcpListener server;
-    bool serverStarted;
+    public bool serverStarted;
 
     public void ServerCreate()
     {
@@ -135,6 +138,20 @@ public class Server : MonoBehaviour
             byte[] byteArray = stream.ToArray();
 
             Broadcast2(byteArray,clients);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            ggg.GetComponent<SpriteRenderer>().color = new Color(0f, 0f, 0f);
+
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            MemoryStream stream = new MemoryStream();
+
+            formatter.Serialize(stream, ggg);
+            byte[] byteArray = stream.ToArray();
+
+            Broadcast2(byteArray, clients);
         }
     }
 
