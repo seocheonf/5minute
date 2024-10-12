@@ -8,10 +8,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using System.Runtime.Serialization.Formatters.Binary;
+using TMPro;
 
 
 public class ClientSide : MonoBehaviour
 {
+    public TextMeshProUGUI tmtmp;
+
+    public string sendingDataTempt;
     public static ClientSide instance = null;
 
     private void Awake()
@@ -98,9 +102,9 @@ public class ClientSide : MonoBehaviour
             CloseSocket();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Send("Text", "Connection_TEST");
+            Send("Text", sendingDataTempt);
         }
         
     }
@@ -131,10 +135,12 @@ public class ClientSide : MonoBehaviour
     {
         if (type.Equals("Text"))
         {
+            tmtmp.text = data;
             Debug.Log(data);
         }
         else
         {
+            tmtmp.text = data;
             Debug.Log(data);
         }
     }
